@@ -1,5 +1,6 @@
 ---
 const programmerLinks = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/kgabrysiewicz' },
   { label: 'Polish CV', href: '/cv/CV_pl.pdf', download: true },
   { label: 'English CV', href: '/cv/CV_eng.pdf', download: true },
   { label: 'GitHub — Gabrysiewicz (Main)', href: 'https://github.com/Gabrysiewicz' },
@@ -8,10 +9,15 @@ const programmerLinks = [
 
 const artLinks = [
   { label: 'ArtStation', href: 'https://hehexa.artstation.com/' },
-  { label: 'Gumroad', href: 'https://www.gumroad.com/' },
-  { label: 'Fab', href: 'https://www.fab.com/' },
-  { label: 'CGTrader', href: 'https://www.cgtrader.com/' },
-  { label: 'Sketchfab', href: 'https://sketchfab.com/' },
+  { label: 'Gumroad', href: 'https://gabrielgerard3d.gumroad.com/' },
+  { label: 'CGTrader', href: 'https://www.cgtrader.com/designers/ggerard3d' },
+  { label: 'Sketchfab', href: 'https://sketchfab.com/GGerard3D' },
+];
+
+const socialLinks = [
+  { label: 'TikTok', href: 'https://www.tiktok.com/@gabrielgerard3d' },
+  { label: 'Instagram', href: 'https://www.instagram.com/gabrielgerard3d/' },
+  { label: 'YouTube', href: 'https://www.youtube.com/channel/UC-j3YMNhLMfLWbmpTOFizwg' },
 ];
 ---
 
@@ -56,6 +62,20 @@ const artLinks = [
           <p>Places where I share my 3D work.</p>
           <ul>
             {artLinks.map((link) => (
+              <li>
+                <a href={link.href} target="_blank" rel="noopener noreferrer">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Social</h2>
+          <p>Follow me on my more active social channels.</p>
+          <ul>
+            {socialLinks.map((link) => (
               <li>
                 <a href={link.href} target="_blank" rel="noopener noreferrer">
                   {link.label}
@@ -123,9 +143,9 @@ const artLinks = [
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.5rem;
-    max-width: 960px;
+    max-width: 1120px;
     width: 100%;
     margin: 0 auto;
   }
