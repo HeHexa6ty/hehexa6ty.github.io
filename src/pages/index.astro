@@ -1,0 +1,177 @@
+---
+const programmerLinks = [
+  { label: 'Polish CV', href: '/cv/CV_pl.pdf', download: true },
+  { label: 'English CV', href: '/cv/CV_eng.pdf', download: true },
+  { label: 'GitHub — Gabrysiewicz (Main)', href: 'https://github.com/Gabrysiewicz' },
+  { label: 'GitHub — HeHexa6ty (Side)', href: 'https://github.com/HeHexa6ty' },
+];
+
+const artLinks = [
+  { label: 'ArtStation', href: 'https://hehexa.artstation.com/' },
+  { label: 'Gumroad', href: 'https://www.gumroad.com/' },
+  { label: 'Fab', href: 'https://www.fab.com/' },
+  { label: 'CGTrader', href: 'https://www.cgtrader.com/' },
+  { label: 'Sketchfab', href: 'https://sketchfab.com/' },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Portfolio</title>
+    <meta name="description" content="Portfolio page with programming and 3D links, plus downloadable CVs." />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <img src="/img/square.png" alt="Profile portrait" class="profile-photo" />
+        <p class="eyebrow">Portfolio</p>
+        <h1>Programmer and 3D artist</h1>
+        <p class="intro">
+          This page gathers my CVs, programming profiles, and 3D portfolio links in one place.
+        </p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Programmer</h2>
+          <p>CVs and main coding profiles.</p>
+          <ul>
+            {programmerLinks.map((link) => (
+              <li>
+                <a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined} download={link.download ? '' : undefined}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>3D</h2>
+          <p>Places where I share my 3D work.</p>
+          <ul>
+            {artLinks.map((link) => (
+              <li>
+                <a href={link.href} target="_blank" rel="noopener noreferrer">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    font-family: Inter, 'Segoe UI', Roboto, Arial, sans-serif;
+    background: linear-gradient(135deg, #000000 0%, #520b0b 100%);
+    color: #f5f7fb;
+  }
+
+  .page {
+    min-height: 100vh;
+    padding: 3rem 1.25rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .hero {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .profile-photo {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 30%;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    margin-bottom: 1rem;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    font-size: 0.8rem;
+    opacity: 0.75;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 0 0 0.75rem;
+  }
+
+  .intro {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    opacity: 0.9;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  p {
+    margin-top: 0;
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+
+  ul {
+    padding-left: 1rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  a {
+    color: #ff1212;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 700px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
